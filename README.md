@@ -1,2 +1,2 @@
 # Small-Minigames
-The game blackjack created when I was a beginner
+A few minigames I created while going through an online Python Bootcamp.
