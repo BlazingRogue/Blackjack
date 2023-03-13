@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc9900; font-weight: bold;}
+.s1 { color: #9bc28e;}
+.s2 { color: #ffffff; font-weight: bold;}
+.s3 { color: #9bc28e; font-weight: bold;}
+.s4 { color: #f971bb;}
+.s5 { color: #cc7832;}
+.s6 { color: #00b580; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#404040">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">Food </span><span class="s0">import </span><span class="s1">Food</span>
+<span class="s0">from </span><span class="s1">turtle </span><span class="s0">import </span><span class="s2">*</span>
+<span class="s0">from </span><span class="s1">Snake </span><span class="s0">import </span><span class="s1">Snake</span>
+<span class="s0">from </span><span class="s1">Scoreboard </span><span class="s0">import </span><span class="s1">Score</span>
+<span class="s0">import </span><span class="s1">time</span>
+
+<span class="s1">screen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s3">()</span>
+<span class="s1">screen.setup</span><span class="s3">(</span><span class="s1">width</span><span class="s2">=</span><span class="s4">1440</span><span class="s5">, </span><span class="s1">height</span><span class="s2">=</span><span class="s4">900</span><span class="s3">)</span>
+<span class="s1">screen.bgcolor</span><span class="s3">(</span><span class="s6">&quot;black&quot;</span><span class="s3">)</span>
+<span class="s1">screen.title</span><span class="s3">(</span><span class="s6">&quot;Snake&quot;</span><span class="s3">)</span>
+<span class="s1">screen.tracer</span><span class="s3">(</span><span class="s4">0</span><span class="s3">)</span>
+
+<span class="s1">snake </span><span class="s2">= </span><span class="s1">Snake</span><span class="s3">()</span>
+<span class="s1">food </span><span class="s2">= </span><span class="s1">Food</span><span class="s3">()</span>
+<span class="s1">score </span><span class="s2">= </span><span class="s1">Score</span><span class="s3">()</span>
+
+<span class="s1">screen.listen</span><span class="s3">()</span>
+<span class="s1">screen.onkey</span><span class="s3">(</span><span class="s1">snake.up</span><span class="s5">, </span><span class="s6">&quot;Up&quot;</span><span class="s3">)</span>
+<span class="s1">screen.onkey</span><span class="s3">(</span><span class="s1">snake.down</span><span class="s5">, </span><span class="s6">&quot;Down&quot;</span><span class="s3">)</span>
+<span class="s1">screen.onkey</span><span class="s3">(</span><span class="s1">snake.left</span><span class="s5">, </span><span class="s6">&quot;Left&quot;</span><span class="s3">)</span>
+<span class="s1">screen.onkey</span><span class="s3">(</span><span class="s1">snake.right</span><span class="s5">, </span><span class="s6">&quot;Right&quot;</span><span class="s3">)</span>
+
+<span class="s1">game_over </span><span class="s2">= </span><span class="s0">False</span>
+<span class="s1">food_eaten </span><span class="s2">= </span><span class="s0">False</span>
+<span class="s0">while not </span><span class="s1">game_over</span><span class="s2">:</span>
+    <span class="s1">screen.update</span><span class="s3">()</span>
+    <span class="s1">snake.move</span><span class="s3">()</span>
+    <span class="s1">time.sleep</span><span class="s3">(</span><span class="s4">0.01</span><span class="s3">)</span>
+    <span class="s0">if </span><span class="s1">snake.head.distance</span><span class="s3">(</span><span class="s1">food</span><span class="s3">) </span><span class="s2">&lt; </span><span class="s4">50</span><span class="s2">:</span>
+        <span class="s1">food.refresh</span><span class="s3">()</span>
+        <span class="s1">snake.extend</span><span class="s3">()</span>
+        <span class="s1">score.score_increase</span><span class="s3">()</span>
+
+    <span class="s0">if </span><span class="s1">snake.head.xcor</span><span class="s3">() </span><span class="s2">&gt; </span><span class="s4">715 </span><span class="s0">or </span><span class="s1">snake.head.xcor</span><span class="s3">() </span><span class="s2">&lt; -</span><span class="s4">715 </span><span class="s0">or </span><span class="s1">snake.head.ycor</span><span class="s3">() </span><span class="s2">&gt; </span><span class="s4">445 </span><span class="s0">or </span><span class="s1">snake.head.ycor</span><span class="s3">() </span><span class="s2">&lt; -</span><span class="s4">445</span><span class="s2">:</span>
+        <span class="s1">game_over </span><span class="s2">= </span><span class="s0">True</span>
+        <span class="s1">score.game_over</span><span class="s3">()</span>
+
+    <span class="s0">for </span><span class="s1">snakes </span><span class="s0">in </span><span class="s1">snake.snakes</span><span class="s2">[</span><span class="s4">1</span><span class="s2">:]:</span>
+        <span class="s0">if </span><span class="s1">snake.head.distance</span><span class="s3">(</span><span class="s1">snakes</span><span class="s3">) </span><span class="s2">&lt; </span><span class="s4">10</span><span class="s2">:</span>
+            <span class="s1">game_over </span><span class="s2">= </span><span class="s0">False</span>
+            <span class="s1">score.game_over</span><span class="s3">()</span>
+
+
+
+<span class="s1">screen.exitonclick</span><span class="s3">()</span>
+
+
+
+
+
+</pre>
+</body>
+</html>

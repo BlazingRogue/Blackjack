@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Snake.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc9900; font-weight: bold;}
+.s1 { color: #9bc28e;}
+.s2 { color: #ffffff; font-weight: bold;}
+.s3 { color: #9bc28e; font-weight: bold;}
+.s4 { color: #f971bb;}
+.s5 { color: #cc7832;}
+.s6 { color: #00b580; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#404040">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Snake.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">turtle </span><span class="s0">as </span><span class="s1">t</span>
+<span class="s0">from </span><span class="s1">turtle </span><span class="s0">import </span><span class="s2">*</span>
+
+<span class="s1">STARTING_POSITIONS </span><span class="s2">= [</span><span class="s3">(</span><span class="s4">0</span><span class="s5">, </span><span class="s4">0</span><span class="s3">)</span><span class="s5">, </span><span class="s3">(</span><span class="s2">-</span><span class="s4">20</span><span class="s5">, </span><span class="s4">0</span><span class="s3">)</span><span class="s5">, </span><span class="s3">(</span><span class="s2">-</span><span class="s4">40</span><span class="s5">, </span><span class="s4">0</span><span class="s3">)</span><span class="s2">]</span>
+<span class="s1">MOVE_DISTANCE </span><span class="s2">= </span><span class="s4">20</span>
+<span class="s1">UP </span><span class="s2">= </span><span class="s4">90</span>
+<span class="s1">DOWN </span><span class="s2">= </span><span class="s4">270</span>
+<span class="s1">LEFT </span><span class="s2">= </span><span class="s4">180</span>
+<span class="s1">RIGHT </span><span class="s2">= </span><span class="s4">0</span>
+
+
+<span class="s0">class </span><span class="s1">Snake</span><span class="s2">:</span>
+
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">self.snakes </span><span class="s2">= []</span>
+        <span class="s1">self.create_snake</span><span class="s3">()</span>
+        <span class="s1">self.head </span><span class="s2">= </span><span class="s1">self.snakes</span><span class="s2">[</span><span class="s4">0</span><span class="s2">]</span>
+
+    <span class="s0">def </span><span class="s1">create_snake</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">for </span><span class="s1">positions </span><span class="s0">in </span><span class="s1">STARTING_POSITIONS</span><span class="s2">:</span>
+            <span class="s1">self.add_snake</span><span class="s3">(</span><span class="s1">positions</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">add_snake</span><span class="s3">(</span><span class="s1">self</span><span class="s5">, </span><span class="s1">positions</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">new_snake </span><span class="s2">= </span><span class="s1">Turtle</span><span class="s3">(</span><span class="s6">&quot;square&quot;</span><span class="s3">)</span>
+        <span class="s1">new_snake.color</span><span class="s3">(</span><span class="s6">&quot;White&quot;</span><span class="s3">)</span>
+        <span class="s1">new_snake.penup</span><span class="s3">()</span>
+        <span class="s1">new_snake.goto</span><span class="s3">(</span><span class="s1">positions</span><span class="s3">)</span>
+        <span class="s1">self.snakes.append</span><span class="s3">(</span><span class="s1">new_snake</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">extend</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">self.add_snake</span><span class="s3">(</span><span class="s1">self.snakes</span><span class="s2">[-</span><span class="s4">1</span><span class="s2">]</span><span class="s1">.position</span><span class="s3">())</span>
+
+    <span class="s0">def </span><span class="s1">move</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">for </span><span class="s1">snake </span><span class="s0">in </span><span class="s1">range</span><span class="s3">(</span><span class="s1">len</span><span class="s3">(</span><span class="s1">self.snakes</span><span class="s3">) </span><span class="s2">- </span><span class="s4">1</span><span class="s5">, </span><span class="s4">0</span><span class="s5">, </span><span class="s2">-</span><span class="s4">1</span><span class="s3">)</span><span class="s2">:</span>
+            <span class="s1">new_x </span><span class="s2">= </span><span class="s1">self.snakes</span><span class="s2">[</span><span class="s1">snake </span><span class="s2">- </span><span class="s4">1</span><span class="s2">]</span><span class="s1">.xcor</span><span class="s3">()</span>
+            <span class="s1">new_y </span><span class="s2">= </span><span class="s1">self.snakes</span><span class="s2">[</span><span class="s1">snake </span><span class="s2">- </span><span class="s4">1</span><span class="s2">]</span><span class="s1">.ycor</span><span class="s3">()</span>
+            <span class="s1">self.snakes</span><span class="s2">[</span><span class="s1">snake</span><span class="s2">]</span><span class="s1">.goto</span><span class="s3">(</span><span class="s1">new_x</span><span class="s5">, </span><span class="s1">new_y</span><span class="s3">)</span>
+        <span class="s1">self.head.forward</span><span class="s3">(</span><span class="s1">MOVE_DISTANCE</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">up</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">if </span><span class="s1">self.head.heading</span><span class="s3">() </span><span class="s2">!= </span><span class="s1">DOWN</span><span class="s2">:</span>
+            <span class="s1">self.head.setheading</span><span class="s3">(</span><span class="s1">UP</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">down</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">if </span><span class="s1">self.head.heading</span><span class="s3">() </span><span class="s2">!= </span><span class="s1">UP</span><span class="s2">:</span>
+            <span class="s1">self.head.setheading</span><span class="s3">(</span><span class="s1">DOWN</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">left</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">if </span><span class="s1">self.head.heading</span><span class="s3">() </span><span class="s2">!= </span><span class="s1">RIGHT</span><span class="s2">:</span>
+            <span class="s1">self.head.setheading</span><span class="s3">(</span><span class="s1">LEFT</span><span class="s3">)</span>
+
+    <span class="s0">def </span><span class="s1">right</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s0">if </span><span class="s1">self.head.heading</span><span class="s3">() </span><span class="s2">!= </span><span class="s1">LEFT</span><span class="s2">:</span>
+            <span class="s1">self.head.setheading</span><span class="s3">(</span><span class="s1">RIGHT</span><span class="s3">)</span>
+</pre>
+</body>
+</html>

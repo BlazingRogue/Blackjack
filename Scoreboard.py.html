@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Scoreboard.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc9900; font-weight: bold;}
+.s1 { color: #9bc28e;}
+.s2 { color: #ffffff; font-weight: bold;}
+.s3 { color: #9bc28e; font-weight: bold;}
+.s4 { color: #f971bb;}
+.s5 { color: #cc7832;}
+.s6 { color: #00b580; font-weight: bold;}
+.s7 { color: #97e85a; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#404040">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Scoreboard.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">turtle </span><span class="s0">import </span><span class="s2">*</span>
+<span class="s0">import </span><span class="s1">random</span>
+
+<span class="s0">class </span><span class="s1">Score</span><span class="s3">(</span><span class="s1">Turtle</span><span class="s3">)</span><span class="s2">:</span>
+
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">super</span><span class="s3">()</span><span class="s1">.__init__</span><span class="s3">()</span>
+        <span class="s1">self.penup</span><span class="s3">()</span>
+        <span class="s1">self.hideturtle</span><span class="s3">()</span>
+        <span class="s1">self.score </span><span class="s2">= </span><span class="s4">0</span>
+        <span class="s1">self.goto</span><span class="s3">(</span><span class="s4">0</span><span class="s5">, </span><span class="s4">400</span><span class="s3">)</span>
+        <span class="s1">self.color</span><span class="s3">(</span><span class="s6">&quot;white&quot;</span><span class="s3">)</span>
+        <span class="s1">self.update_scoreboard</span><span class="s3">()</span>
+
+    <span class="s0">def </span><span class="s1">update_scoreboard</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">self.write</span><span class="s3">(</span><span class="s6">f&quot;Score: </span><span class="s7">{</span><span class="s1">self.score</span><span class="s7">}</span><span class="s6">&quot;</span><span class="s5">, </span><span class="s0">False</span><span class="s5">, </span><span class="s1">align</span><span class="s2">=</span><span class="s6">&quot;center&quot;</span><span class="s5">, </span><span class="s1">font</span><span class="s2">=</span><span class="s3">(</span><span class="s6">'Courier'</span><span class="s5">, </span><span class="s4">24</span><span class="s5">, </span><span class="s6">'normal'</span><span class="s3">))</span>
+
+    <span class="s0">def </span><span class="s1">score_increase</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">self.score </span><span class="s2">+= </span><span class="s4">1</span>
+        <span class="s1">self.clear</span><span class="s3">()</span>
+        <span class="s1">self.update_scoreboard</span><span class="s3">()</span>
+
+    <span class="s0">def </span><span class="s1">game_over</span><span class="s3">(</span><span class="s1">self</span><span class="s3">)</span><span class="s2">:</span>
+        <span class="s1">self.goto</span><span class="s3">(</span><span class="s4">0</span><span class="s5">, </span><span class="s4">20</span><span class="s3">)</span>
+        <span class="s1">self.write</span><span class="s3">(</span><span class="s6">f&quot;GAME OVER&quot;</span><span class="s5">, </span><span class="s0">False</span><span class="s5">, </span><span class="s1">align</span><span class="s2">=</span><span class="s6">&quot;center&quot;</span><span class="s5">, </span><span class="s1">font</span><span class="s2">=</span><span class="s3">(</span><span class="s6">'Courier'</span><span class="s5">, </span><span class="s4">24</span><span class="s5">, </span><span class="s6">'normal'</span><span class="s3">))</span></pre>
+</body>
+</html>
