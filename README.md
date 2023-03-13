@@ -1,2 +1,2 @@
 # Small-Minigames
-A few minigames I created while going through an online Python Bootcamp.
+My first experiences with coding small projects in Python
