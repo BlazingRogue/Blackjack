@@ -1,2 +1,2 @@
 # Small-Minigames
-My first experiences with coding small projects in Python
+Small projects in Python
